@@ -6,7 +6,7 @@ function router(app) {
     app.get("/cart", async (req, res) => {
         try {
 
-            const clients = await cartBL.read()
+            const clients = await cartBL.read(req.query._id)
             res.send(clients)
         } catch (error) {
             console.log(error);
