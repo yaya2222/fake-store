@@ -1,7 +1,11 @@
 const ClientModel = require("../model/modelClient")
 
-function read(filter = {}) {
-    return ClientModel.find(filter)
+function read() {
+    return ClientModel.find({isActive:true})
+}
+
+function readOne(email){
+    return ClientModel.findOne({email,isActive:true})
 }
 
 function create(client) {
@@ -16,4 +20,4 @@ function del(email){
     return ClientModel.findOneAndUpdate({email},{isActive:false})
 }
 
-module.exports={read,create,updata,del}
+module.exports={read,readOne,create,updata,del}

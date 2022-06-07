@@ -1,10 +1,9 @@
 const CartModel = require("../model/modelCart")
 
-function read(filter = {}) {
-
-    return CartModel.find({ ...filter, isClientActive: true })
+async function read() {
+    const orders = await CartModel.find({isActive:true })
+    return orders
 }
-
 function create(newCart) {
     return CartModel.create(newCart)
 }
@@ -14,7 +13,7 @@ function updata(_id, newData) {
 }
 
 function del(_id) {
-    return CartModel.findOneAndUpdate({ _id }, { isClientActive: false })
+    return CartModel.findOneAndUpdate({ _id }, { isActive: false })
 }
 
-module.exports={read,create,updata,del}
+module.exports = { read, create, updata, del }

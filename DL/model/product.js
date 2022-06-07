@@ -2,10 +2,10 @@ const mongoose=require("mongoose")
 
 const ProductSchema= new mongoose.Schema({
 id:{type:Number,unique:true},
-title:{type:String,required},
-price:{type:Number,required},
+title:{type:String,required:true},
+price:{type:Number,required:true},
 description:String,
-category:{type:String,required},
+category:{type:String,required:true},
 image:String,
 rating:{
 rate:Number,
