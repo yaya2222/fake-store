@@ -1,17 +1,15 @@
 const ProductModel = require("../model/product")
 // require("../../db")()
 
-function readAll() {
-    return ProductModel.find({ isActive: true })
+ function readAll(filter={}) {
+    return  ProductModel.find({...filter,isActive: true })
 }
 
 function readOne(id) {
     return ProductModel.findOne({ id, isActive: true })
 }
 
-function findByCategory(category) {
-    return ProductModel.find({ category, isActive: true })
-}
+
 
 function create(product) {
     return ProductModel.create(product)
@@ -32,4 +30,4 @@ return ProductModel.updateMany({category},newDate)
  
 
 
-module.exports = { readAll, readOne, findByCategory, create,updataOne,del,updataByCatergory }
+module.exports = { readAll, readOne, create,updataOne,del,updataByCatergory }

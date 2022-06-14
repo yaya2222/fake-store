@@ -4,7 +4,7 @@ function router(app) {
 
     app.get("/allProducts", async (req, res) => {
         try {
-            const allproducts = await productBL.readAll()
+            const allproducts = await productBL.readAll(req.body)
             res.send(allproducts)
         } catch (error) {
             console.log(error);
@@ -16,17 +16,6 @@ function router(app) {
         try {
             const product = await productBL.readOne(req.query.id)
             res.send(product)
-        } catch (error) {
-            console.log(error);
-            res.status(400).send(error)
-
-        }
-    })
-
-    app.get("/category", async (req, res) => {
-        try {
-            const products = await productBL.findByCategory(req.query.category)
-            res.send(products)
         } catch (error) {
             console.log(error);
             res.status(400).send(error)
